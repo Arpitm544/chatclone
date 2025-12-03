@@ -10,7 +10,7 @@ const userSocketMap = {} // userId -> socketId
 function initializeSocket(server) {
   io = new Server(server, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: "https://profound-peony-9e9593.netlify.app",
       credentials: true,
     },
   })
