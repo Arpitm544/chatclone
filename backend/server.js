@@ -17,11 +17,21 @@ const server = http.createServer(app)
 connectDB()
  
 app.set("trust proxy", 1);
-app.use(cors({
-  origin: "https://profound-peony-9e9593.netlify.app",
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-}));
+
+app.use(
+  cors({
+    origin: "https://profound-peony-9e9593.netlify.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "X-Requested-With",
+      "Accept",
+    ],
+    exposedHeaders: ["set-cookie"],
+  })
+);
 
 app.use(express.json({limit:'10mb'}))
 app.use(express.urlencoded({ extended: true , limit:'10mb'}))
