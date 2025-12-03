@@ -1,7 +1,8 @@
 import axios from "axios";
+import { BACKEND_URL } from "../config";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL || "https://chatclone-f5lp.onrender.com",
+  baseURL: BACKEND_URL,
   withCredentials: true,
 });
 

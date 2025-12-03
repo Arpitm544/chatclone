@@ -23,7 +23,7 @@ This is the code that powers your current chat application.
 16:   query:{ userId: localStorage.getItem("userId") },
 17: })
 ```
-*   **Line 14**: Initializes the socket connection to your backend (`https://chatclone-f5lp.onrender.com`).
+*   **Line 14**: Initializes the socket connection to your backend (`https://chatui-1-ffr2.onrender.com` via the shared `BACKEND_URL` config).
 *   **Line 15**: `withCredentials: true` ensures cookies (like your JWT token) are sent with the socket handshake.
 *   **Line 16**: `query: { userId: ... }` sends the logged-in user's ID as a query parameter.
     *   **Why?**: The backend likely uses this `userId` to map the socket ID to a specific user (e.g., in a `userSocketMap`) so it knows who is online.
@@ -101,10 +101,10 @@ This component contains logic for a specific group chat view, including its own 
 *   Since it's not used, you can likely ignore or delete it.
 
 ### 2. `socket.js` (Unused)
-This file exports a socket instance:
+If you reintroduce a dedicated `socket.js`, make sure it uses the shared config:
 ```javascript
-const socket = io("https://chatclone-f5lp.onrender.com")
+import { BACKEND_URL } from "./config"
+const socket = io(BACKEND_URL)
 export default socket
 ```
-*   This file is **not imported** anywhere.
-*   `ChatApp.jsx` creates its *own* socket instance instead of using this one.
+*   This helper is currently unused because `ChatApp.jsx` creates its own socket instance.

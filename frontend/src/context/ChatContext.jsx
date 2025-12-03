@@ -3,13 +3,12 @@ import io from "socket.io-client"
 import axios from "../lib/axios"
 import imageCompression from 'browser-image-compression'
 import { useNavigate } from "react-router-dom"
+import { BACKEND_URL } from "../config"
 
 const ChatContext = createContext()
 
-const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://chatclone-f5lp.onrender.com"
-
 // SOCKET CONNECTION
-const socket = io(BACKEND, {
+const socket = io(BACKEND_URL, {
   withCredentials: true,
   query:{ userId: localStorage.getItem("userId") },
   autoConnect: false // We'll connect manually when we have a user
