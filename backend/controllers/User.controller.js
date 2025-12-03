@@ -31,8 +31,13 @@ router.post('/signup',async (req,res)=>{
     const token=jwt.sign(
         {id:newUser._id},process.env.JWT_SECRETKEY,{expiresIn:'7d'}
     )
-    res.cookie("token",token,
-        {httpOnly:true,secure:true,sameSite:'none',maxAge:7*24*60*60*1000})
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+        path: "/",
+        maxAge: 7 * 24 * 60 * 60 * 1000
+    })
         .status(200)
         .json({success:true,message:"User is Signup successful",
             user:
@@ -64,8 +69,13 @@ router.post('/login',async (req,res)=>{
      }
      const token=jwt.sign({id:user._id},process.env.JWT_SECRETKEY,{expiresIn:'7d'})
     
-     res.cookie("token",token,
-        {httpOnly:true,secure:true,sameSite:'none',maxAge:7*24*60*60*1000})
+     res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+        path: "/",
+        maxAge: 7 * 24 * 60 * 60 * 1000
+     })
         .status(200).
         json({success:true,message:"Login Successful",
             user:{id:user.id,name:user.name,username:user.username,email:user.email, profilePic: user.profilePic, securityCode: user.securityCode}})
