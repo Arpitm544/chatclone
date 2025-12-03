@@ -18,7 +18,7 @@ connectDB()
  
 app.set("trust proxy", 1);
 app.use(cors({
-  origin: "https://chatui-066b08.netlify.app",
+  origin: "https://profound-peony-9e9593.netlify.app",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));

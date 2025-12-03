@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL || "https://chatui-1-ffr2.onrender.com",
+  baseURL: import.meta.env.VITE_BACKEND_URL || "https://chatclone-f5lp.onrender.com",
   withCredentials: true,
 });
 
