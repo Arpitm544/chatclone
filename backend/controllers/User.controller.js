@@ -165,7 +165,15 @@ router.put('/update-profile', authmiddleware, async (req, res) => {
 
 router.delete('/logout',authmiddleware,async (req,res)=>{
     try {
-        res.clearCookie("token").status(200).json({success:true,message:"Logout successful"})
+        res
+            .clearCookie("token", {
+                httpOnly: true,
+                secure: true,
+                sameSite: "none",
+                path: "/"
+            })
+            .status(200)
+            .json({success:true,message:"Logout successful"})
     } catch (error) {
         console.log("Logout Error:", error)
         return res.status(500).json({message:"Server error"})
