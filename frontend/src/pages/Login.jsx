@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Switch from '../components/Switch'
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [email,setEmail]=useState('')
