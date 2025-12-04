@@ -15,6 +15,10 @@ const Login = () => {
     const navigate=useNavigate()
 
     useEffect(() => {
+        
+        const token=localStorage.getItem("userId")
+        if(!token) return;
+        
         const checkAuth = async () => {
             try {
                 await axios.get("/user/check-auth")
